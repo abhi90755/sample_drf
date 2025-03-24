@@ -32,3 +32,12 @@ def post_student(request):
      serializer.save()
      return Response( {'message' : 'sent','data': serializer.data})
     return Response(serializer.errors)
+
+
+@api_view(['PATCH'])
+def post_student(request):
+    serializer = StudentSerializers(data=request.data)
+    if serializer.is_valid():
+     serializer.save()
+     return Response( {'message' : 'sent','data': serializer.data})
+    return Response(serializer.errors)
